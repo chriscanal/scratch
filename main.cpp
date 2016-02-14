@@ -189,10 +189,10 @@ Deck::Deck(const Deck &deckCard)
     headDeck = new node<Card>;
     headDeck = deckCard.headDeck;
 }
-
 Deck::~Deck()
 //destructor
 {
+    /*
     node<Card>* current = headDeck->next;
     node<Card>* previous;
 
@@ -203,7 +203,7 @@ Deck::~Deck()
         current = current -> next;
         delete previous;
     }
-
+*/
 } //end of destructor
 
 
@@ -212,7 +212,7 @@ void Deck::shuffle()
 {
     //that is in the range fifty thousand to five million
     //int shuffles = rand() % 5000000 + 50000;
-    int shuffles = rand() % 5000000 + 50000;
+    int shuffles = rand() % 10 + 5;
     cout << "\n\nWe will shuffle the cards " << shuffles << " times!!" << endl;
     int shuffleLocation1;
     int shuffleLocation2;
@@ -254,7 +254,6 @@ void Deck::shuffle()
                             if (shuffleLocation1 == 0)
                             //swap two cards edge case - first card is head
                             {
-                                /*
                                 cardHolderSwitch1 = cardHolderLocation1;
                                 headDeck = cardHolderLocation2;
                                 cardHolderLocation2Prev->next =
@@ -263,12 +262,10 @@ void Deck::shuffle()
                                 cardHolderLocation1->next =
                                     cardHolderLocation2->next;
                                 cardHolderLocation2->next = cardHolderSwitch1;
-                                */
                             } //end of first card edge case
                             else if (shuffleLocation2 == 0)
                             //swap two cards edge case - second card is head
                             {
-                                /*
                                 cardHolderSwitch1 = cardHolderLocation2;
                                 headDeck = cardHolderLocation1;
                                 cardHolderLocation1Prev->next =
@@ -277,12 +274,10 @@ void Deck::shuffle()
                                 cardHolderLocation2->next =
                                     cardHolderLocation1->next;
                                 cardHolderLocation1->next = cardHolderSwitch1;
-                                */
                             } //end of second card edge case
                             else
                             //otherwise swap the two cards
                             {
-                                /*
                                 cardHolderSwitch1 = cardHolderLocation1;
                                 cardHolderLocation1Prev->next =
                                     cardHolderLocation2;
@@ -292,7 +287,6 @@ void Deck::shuffle()
                                 cardHolderLocation1->next =
                                     cardHolderLocation2->next;
                                 cardHolderLocation2->next = cardHolderSwitch1;
-                                */
                             } //end of if statement to swap cards
 
                         } //end of if statement for a shuffle location 2
@@ -437,9 +431,6 @@ int getPoints(Card c, int score)
 void playFlip(Deck gameDeck)
 //plays the game flip
 {
-    cout << "line before gameDeck\n";
-
-    cout << "line after gamedeck\n";
 
     int score = 0;
     vector<int> guessVector;
@@ -451,7 +442,7 @@ void playFlip(Deck gameDeck)
       gameDeck.shuffle();
       cout << "line 424\n";
     }
-/*
+
     node<Card> *playerDeck = new node<Card> (gameDeck.deal());
     node <Card> *currentCard;
     currentCard = playerDeck;
@@ -466,7 +457,7 @@ void playFlip(Deck gameDeck)
     }
 
     bool gameOn = true;
-    int cardNumber;
+    int cardNumber = -1;
     node<Card> *drawnCard;
     node<Card> *thisCard;
 
@@ -540,7 +531,7 @@ void playFlip(Deck gameDeck)
             cout << "I didn't understand your input..." << endl;
             cout << "Oh well, lets play again!!!" << endl;
         }
-    }*/
+    }
 
 }
 
